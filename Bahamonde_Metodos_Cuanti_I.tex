@@ -1,0 +1,806 @@
+%LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=true,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,        % color of links to bibliography
+    filecolor=blue,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+
+
+\usepackage{geometry}
+\usepackage{import} % To import email.
+\usepackage{marvosym} % face package
+\usepackage{xcolor,color}
+\usepackage{fontawesome}
+\usepackage{amssymb} % for bigstar
+\usepackage{epigraph}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+\usepackage[T1]{fontenc}
+\usepackage[sc,osf]{mathpazo}
+
+% Set your name here
+\def\name{M\'etodos Cuantitativos I - {\color{red}SIGLA PEND}}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+\def\footerlink{}
+% \href{http://www.hectorbahamonde.com}{www.HectorBahamonde.com}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = blue,
+  pdfauthor = {\name},
+  pdfkeywords = {intro to social sciences},
+  pdftitle = {\name: Syllabus},
+  pdfsubject = {Syllabus},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{{\tiny \name}}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+
+% email input begin
+\newread\fid
+\newcommand{\readfile}[1]% #1 = filename
+{\bgroup
+  \endlinechar=-1
+  \openin\fid=#1
+  \read\fid to\filetext
+  \loop\ifx\empty\filetext\relax% skip over comments
+    \read\fid to\filetext
+  \repeat
+  \closein\fid
+  \global\let\filetext=\filetext
+\egroup}
+\readfile{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/email.txt}
+% email input end
+
+
+%%% bib begin
+\usepackage[american]{babel}
+\usepackage{csquotes}
+%\usepackage[style=chicago-authordate,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+
+\usepackage[authordate,isbn=false,doi=false,url=false,eprint=false]{biblatex-chicago}
+\DeclareFieldFormat[article]{title}{\mkbibquote{#1}} % make article titles in quotes
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}} % make theses italics
+
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+
+\addbibresource{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/library.bib} 
+\addbibresource{/Users/hectorbahamonde/RU/Bibliografia_PoliSci/Bahamonde_BibTex2013.bib} 
+
+% USAGES
+%% use \textcite to cite normal
+%% \parencite to cite in parentheses
+%% \footcite to cite in footnote
+%% the default can be modified in autocite=FOO, footnote, for ex. 
+%%% bib end
+
+
+
+
+\begin{document}
+
+% Place name at left
+%{\huge \name}
+
+% Alternatively, print name centered and bold:
+\centerline{\huge \bf \name}
+
+\epigraph{\emph{Statistics: ``science dealing with data about the condition of a state or community''}}{Gottfried Aschenwall, 1770}
+
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+ Universidad de O$'$Higgins \\
+  Instituto de Ciencias Sociales \\
+  Rancagua, Chile\\
+  \\
+  \\
+
+\end{minipage}
+\hspace{4cm}\begin{minipage}{0.45\linewidth}
+  \begin{tabular}{ll}
+{\bf \'Ultima actualizaci\'on}: \today. \\
+ {\bf Descarga la \'ultima versi\'on} \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Bahamonde_Metodos_de_Investigacion.pdf}{aqu\'i}.%\\
+   %{\bf {\color{red}{\scriptsize Not intended as a definitive version}}} %\\
+    \\
+    \\
+    \\
+    \\
+    \\
+  \end{tabular}
+\end{minipage}
+
+
+
+\subsection*{Aspectos Log\'isticos}
+
+
+\vspace{0.8mm}
+{\bf Profesor}: H\'ector Bahamonde, PhD.\\
+\texttt{e:}\href{mailto:hector.bahamonde@uoh.cl}{\texttt{hector.bahamonde@uoh.cl}}\\
+\texttt{w:}\href{http://www.hectorbahamonde.com}{\texttt{www.hectorbahamonde.com}}\\
+{\bf Office Hours}: Toma una hora \href{https://calendly.com/bahamonde/officehours}{\texttt{aqu\'i}}.
+
+
+\vspace{5mm}
+{\bf Hora de c\'atedra}: {\color{red}PENDIENTE}.\\
+{\bf Lugar de c\'atedra}: {\color{red}PENDIENTE}.\\
+{\bf Acceso a materiales del curso}: \href{https://ucampus.uoh.cl/uoh/2019/2/AP2107/1/}{\texttt{uCampus}} {\color{red}URL PENDIENTE}.
+
+\vspace{5mm}
+{\bf Ayudante de c\'atedra (TA)}: Gonzalo Barr\'ia.\\
+\texttt{e:}\href{mailto:gonzalo.barria@uoh.cl}{\texttt{gonzalo.barria@uoh.cl}}\\
+{\bf TA Bio}: Cientista Pol\'itico (PUC) y Mag\'ister en Ciencia Pol\'itica (PUC).\\
+{\bf Hora de ayudant\'ia}: {\color{red}PENDIENTE}.\\
+{\bf Lugar de ayudant\'ia}: {\color{red}PENDIENTE}.
+
+\vspace{5mm}
+{\bf Carrera}:  Ingenieria Comercial.\\
+{\bf Eje de Formaci\'on}: M\'etodos Cuantitativos.\\
+{\bf Semestre/A\~no}: Quinto Semestre/2020.\\
+{\bf Pre-requisitos}: M\'etodos Matem\'aticos Avanzados y Teor\'ia Estad\'istica.\\
+{\bf SCT}: 6.\\
+{\bf Horas semanales}: C\'atedra (3 horas), Ayudant\'ia (1.5 horas).\\
+{\bf Semanas}:  15.\\
+
+
+
+\subsection*{Motivaci\'on: ¿Por qu\'e tomar este curso?}
+
+\emph{¿Qu\'e efecto tiene la educaci\'on sobre los ingresos? ¿C\'omo podemos evaluar los efectos de una reforma educacional? ¿La legalizaci\'on de la mariguana aumenta su consumo? ¿Qu\'e candidato/a ganar\'ia la elecci\'on presidencial si \'esta fuera ma\~nana?} 
+\\
+\\
+Las entidades p\'ublicas gu\'ian sus decisiones estrat\'egicas en base informaci\'on, i.e. datos. Esto ha tomado incluso m\'as importancia en la actualidad, donde ha habido una digitalizaci\'on de los datos sociales. Es fundamental que los cientistas sociales, y en particular, los/las administradores/as p\'ublicos, sepan c\'omo usar estos datos. A\'un m\'as, el quehacer social en general, est\'a constantemente produciendo datos. Cada vez que usas \emph{Twitter}, pides un \emph{Uber}, env\'ias un e-mail, votas, respondes una encuesta, est\'as produciendo datos sociales. Piensa en lo siguiente: si bien es cierto que hace unos diez a\~nos atr\'as \emph{faltaban} datos, hoy en d\'ia los datos \emph{sobran}. El desaf\'io actual consiste en saber c\'omo analizarlos correctamente, y as\'i ayudar a los tomadores de decisiones. Esto es importante. {\bf Ma\~nana tu podr\'ias ser un/a analista en una de las decenas de Departamentos de Estudios repartidas en la administraci\'on del Estado}. {\bf Este curso te prepara para ese mundo} (incluyendo el mundo de la consultor\'ia).
+\\
+\\
+Aunque lo que aprenderemos es altamente num\'erico y matem\'atico, no te confundas. Estos m\'etodos no son infalibles, y no nos contar\'an ``la verdad'' (si es que algo as\'i existiera). A\'un necesitas ser muy critico(a). Como ver\'as, {\bf la \emph{estad\'istica inferencial} (que es el objeto de este curso) es un \emph{arte}, no una \emph{ciencia}}. Los n\'umeros nos sugerir\'an ciertas ideas, pero aun as\'i nuestro trabajo ser\'a \emph{interpretar} estos resultados. No seas obediente. Se cr\'itico/a, auto-cr\'itico/a. Sospecha de tus propios resultados y el de los dem\'as. Mal que mal, estaremos haciendo {\bf inferencias} (no \emph{certezas}) estad\'isticas. Como veremos, el fantasma de este semestre se llamar\'a \emph{incertidumbre}. 
+\\
+\\
+Honestamente, espero que este curso cautive tu atenci\'on, y simiente tu curiosidad intelectual, sobre todo, mostr\'andote que nuestro objeto de estudio (la sociedad) es apasionante. 
+\\
+\\
+\emph{Bienvenid$@$s!}
+
+
+\subsection*{Prop\'osito Formativo}
+
+El objetivo de este curso es introducir al/la alumno/a a los m\'etodos econom\'etricos b\'asicos para el an\'alisis de datos. El curso avanza progresivamente en distintos t\'opicos en regresi\'on lineal y m\'etodos no lineales. La principal caracter\'istica es la introducci\'on a modelos de regresi\'on lineal para en cursos m\'as avanzados estudiar otro tipo de estimaciones.
+
+
+\subsection*{Objetivos Generales del Curso}
+
+El gran objetivo de este curso, es poder generar en la/el estudiante la capacidad de razonamiento cr\'itico, desde un punto de vista emp\'irico. 
+\\
+\\
+El lenguaje que aprenderemos este semestre ser\'a \texttt{R}, el lenguaje de programaci\'on m\'as usado en las ciencias sociales. Esto tiene varias ventajas. \texttt{R} es gratis y corre en todas las plataformas disponibles. Segundo, es un lenguaje orientado a ``objetos''. Esto significa---tercero---que fuerza al/la estudiante a realmente pensar en el proceso matem\'atico/estad\'istico detr\'as del an\'alisis que se est\'a haciendo. Al contrario de otros \emph{softwares} estad\'isticos como \texttt{SPSS} y \texttt{Stata}, donde el/la usuario(a) simplemente aprieta botones sin saber lo que ocurre realmente, \texttt{R} necesita que le digamos exactamente qu\'e hacer. Y eso es lo que aprenderemos este semestre. Cuarto, si sabes \texttt{R}, te ser\'a absolutamente f\'acil aprender \texttt{Stata} (o \texttt{SPSS}).
+\\
+\\
+A pesar de estas ventajas, los economistas siguen ocupando \texttt{Stata}. Es por esto que tambi\'en cubriremos las funciones b\'asicas de \texttt{Stata}.
+\\
+\\
+Este curso est\'a dividido en tres grandes unidades. Cada unidad tiene sus diferentes evaluaciones.
+
+
+\begin{enumerate}
+	\item Funciones b\'asicas en \texttt{R} y \texttt{Stata}.
+	\item Estad\'istica descriptiva en \texttt{R} y \texttt{Stata}.
+	\item Introducci\'on a modelos lineales en \texttt{R} y \texttt{Stata}.
+  \item Inferencia causal en \texttt{R}.
+\end{enumerate}
+ 
+
+
+\subsection*{Objetivos Espec\'ificos del Curso}
+
+\begin{enumerate}
+  \item Logre establecer una pregunta econ\'omica y un m\'etodo de identificaci\'on que permita verificar la hip\'otesis de forma causal.
+  \item Puedan \emph{testear} hip\'otesis y tengan las herramientas para analizar pol\'iticas de forma cr\'itica.
+  \item Entiendan las limitaciones de los trabajos emp\'iricos y los \emph{trade offs} existentes al establecer supuestos.
+\end{enumerate}
+
+
+\begin{itemize}
+    \item[{\color{red}\Pointinghand}] Se espera que los estudiantes hagan sus respectivas lecturas \emph{antes} de cada clase para poder participar en el debate cr\'itico que haremos en cada una de ellas. Tambi\'en se espera que los/las estudiantes hagan los ejercicios pr\'acticos clase a clase.
+\end{itemize}
+
+
+
+\subsection*{Instalaci\'on de \texttt{R}}
+
+Primero, instala \texttt{R} desde el \href{https://www.r-project.org/}{sitio Web} oficial. Click en ``CRAN'' (extremo superior izquierdo). Selecciona cualquier \emph{mirror}. Por ejemplo, b\'ajalo desde el \emph{0-Cloud}. Despu\'es, baja la interfaz m\'as utilizada, llamada R-Studio. Para esto, anda al \href{https://www.rstudio.com}{sitio Web} oficial, despu\'es \emph{Download R-Studio}, \emph{FREE}, selecciona la versi\'on que sea compatible con tu sistema operativo (Windows, Mac, Ubuntu).
+
+
+	\begin{itemize}
+		\item[{\color{red}\Pointinghand}] Si tu \emph{laptop} no puede cargar \texttt{R}, nuestros laboratorios de computaci\'on UOH disponen del \emph{software}. No tener el software (o un computador para cargarlo) no ser\'an excusa para no presentar tus trabajos. Si debes ocupar el laboratorio, planea tu trabajo de manera eficiente. Por cada trabajo que no entregues, tendr\'as un 1.
+	\end{itemize}
+
+
+\subsection*{Instalaci\'on de \texttt{Stata}}
+
+{\color{red}PENDIENTE}
+
+
+
+\subsection*{Pol\'itica sobre Trabajo Cooperativo}
+
+Este es un curso pr\'actico. Espero que pases muchas horas en el laboratorio. {\bf Yo recomiendo el trabajo cooperativo}. Es saludable que consultes con tus compa\~neros/as de curso, y que traten, en la medida de lo posible, de encontrar las soluciones en conjunto. Sin embargo, salvo por el trabajo final y la presentaci\'on final (m\'as sobre esto abajo), todos los trabajos (y sus evaluaciones) ser\'an individuales.
+
+
+\subsection*{Etiquette: C\'atedra y Ayudant\'ia}
+ 
+
+\begin{itemize}
+	\item[$\bullet$] No llegues tarde. La sala de clases se cierra despu\'es de los primeros 15 minutos. Esta regla es importante, y no tendr\'a excepciones.
+  \item[$\bullet$] No te retires antes. Esta regla es importante, y no tendr\'a excepciones.
+	\item[$\bullet$] No comas en clases. Bebestibles, tales como caf\'e y t\'e est\'an OK.
+	\item[$\bullet$] {\bf S\'i se pueden ocupar \emph{laptops}}. No se pueden ocupar celulares ni \emph{tablets}, ni otros aparatos digitales. No habr\'an excepciones. Los celulares deber\'an estar apagados, no en silencio. Aquellos estudiantes que no respeten esta regla, ser\'an invitados a salir de la sala. %No puedes sacar fotos a las diapositivas.
+	\item[$\bullet$] La asistencia es obligatoria (y parte de tu nota de participaci\'on). Si faltaste a una clase, cons\'iguete los apuntes con un compa\~nero/a. Yo no ofrezco clases particulares de mi clase. Sin embargo, si tienes preguntas espec\'ificas, \href{https://calendly.com/bahamonde/officehours}{toma una hora} conmigo. 
+	\item[{\color{red}\Pointinghand}] Si vives en un lugar donde hay mala conectividad de Internet, planea tu trabajo de manera eficiente. Por ejemplo, no esperes hasta ultimo minuto para enviar tus trabajos via uCampus. {\bf Trabajos que queden fuera de plazo, tendran un 1 autom\'aticamente}.
+\end{itemize}
+
+
+
+\subsection*{Evaluaciones}
+
+\begin{enumerate}
+
+	% Participation
+	\item {\bf Lecturas, Participaci\'on, \emph{Pop Quizzes}, y Asistencia}: {\input{/Users/hectorbahamonde/RU/Teaching/Metodos_de_Investigacion/percentage_participation.txt}\unskip}\%.
+	
+	
+	\begin{itemize}
+		\item[\Pointinghand] {\bf La asistencia a cada una de las clases y a cada una de las ayudant\'ias es obligatoria}.
+	\end{itemize}
+
+	El TA y yo asumiremos durante todo el semestre que has le\'ido. Nosotros empleamos un m\'etodo de clases interactivo, pero este m\'etodo necesita de tu participaci\'on activa en clases. \emph{Asistencia no s\'olo significa que vayas a clase; tambi\'en debes participar}. Esto significa que aunque hayas ido a todas las clases, es \emph{imposible} que tengas la nota m\'axima en asistencia si es que no has participado en clases y ayudant\'ia. Es por esto que la nota es de asistencia \emph{y} participaci\'on.
+\\
+\\	
+	Para asegurarnos de que est\'es haciendo las lecturas, habr\'an una serie de \emph{pop quizzes} (``pruebas sorpresa'') tanto en c\'atedra como ayudant\'ia. Estos controles ser\'an cortos (5-10 minutos), y apuntan a medir si leyeron; o sabes, o no sabes. Estas pruebas se aplicar\'an completamente al azar, en cualquier momento de la clase, y sin previo aviso. Si faltaste, tendr\'as un 1 en ese control. En general, las preguntas ser\'an acerca de un concepto clave, y cuya respuesta correcta ser\'a una l\'inea (o dos, como m\'aximo). Tambi\'en puede ser que la pregunta requiera algunas l\'ineas de programaci\'on.
+
+	%There will be a number of pop quizzes during the semester, both in lecture \emph{and} recitation. Quizzes will be short (3-5 minutes), completed at any point of the class, and designed to make sure everyone is keeping up with the readings and lecture. There will be no make-up quizzes. If you are absent (or late) from class that day, you will get a $1$ on that quiz. 
+	%\\
+	%\\
+	% 3 credits
+	%Students are expected to put in 90 hours of work during the semester for a 3-credit class. That represents 5 hours per week, in a semester of 18 weeks. These are \emph{Universidad de O\'\unskip Higgins}'s guidelines. Since you will be spending 1.5 hours in the classroom, this means you should be working about 3.5 hours per week for this course {\bf outside} of the classroom. If you find that you are spending more than that, please see me in my office hours to discuss strategies to read more efficiently. 
+	% 6 credits
+	%Se espera que los estudiantes trabajen 180 horas durante el semestre para un curso como este, de 6 cr\'editos. Eso significa que semanalmente, tendr\'as que trabajar 10 horas, en un semestre de 18 semanas. {\color{red}pendiente: revisar numero de semanas.}
+	%Students are expected to put in 180 hours of work during the semester for a 6-credit class. That represents 10 hours per week, in a semester of 18 weeks. These are \emph{Universidad de O$'$Higgins}'s guidelines. Since you will be spending 3 hours in the classroom, this means you should be working about 7 hours per week for this course {\bf outside} of the classroom. Since recitation lasts for 1.5 hours, that means that you should be {\bf reading} 5.5 hours per week. If you find that you are spending more than that, please see me in my office hours to discuss strategies to read more efficiently. 
+
+	% pruebas tematicas
+	\item {\bf Ejercicios Pr\'acticos por unidad}: 5\% cada uno, 25\% en total.
+
+		\begin{enumerate}
+			\item Funciones b\'asicas en \texttt{R}: \#1, \#2. Total= 10\%.
+			\item Estad\'istica descriptiva en \texttt{R}: \#3. Total= 5\%.
+			\item Introducci\'on a modelos lineales en \texttt{R}: \#4, \#5. Total= 10\%.
+		\end{enumerate}
+
+Tienes que dar estas pruebas en la fecha establecida. No habr\'an pruebas recuperativas. La \'unica excusa valida ser\'a de car\'acter m\'edica. Las preguntas saldr\'an de las lecturas, las clases y las ayudant\'ias.
+
+\begin{itemize}
+		\item[\Pointinghand] {\bf S\'i puedes ocupar apuntes escritos (en cuaderno o en otros \emph{scripts} de \texttt{R}). No puedes usar Internet, ni consultar con otros compa\~neros}.
+		\item[\Pointinghand] Es importante que estas l\'ineas corran bien: el usuario (yo) tiene que ser cap\'az de ver como \texttt{R} ejecuta cada linea, sin estancarse.
+		\item[\Pointinghand] Es importante que vayas guiando al usuario (yo) sobre tu raciocinio. Aseg\'urate de comentar (usando el simbolo \#).
+\end{itemize}
+
+
+% Homeworks
+	\item {\bf Tareas para la casa, una por unidad}: 10\% cada uno, 30\% en total.
+
+		\begin{enumerate}
+			\item Funciones b\'asicas en \texttt{R}: 10\%.
+			\item Estad\'istica descriptiva en \texttt{R}: 10\%.
+			\item Introducci\'on a modelos lineales en \texttt{R}: 10\%.
+		\end{enumerate}
+
+
+	En estos ejercicios deber\'as resolver un problema pr\'actico. Seg\'un lo estipula el programa, recibir\'as una base de datos, y una serie de preguntas de car\'acter aplicado. El producto (i.e. lo que tienes que entregar), ser\'a un \emph{script} de \texttt{R}. Un \emph{script} es un texto que contiene l\'ineas de programaci\'on (de \texttt{R}), que al ser ejecutadas, me llevar\'an a tu respuesta. El plazo para entregar el \emph{script} es el domingo de esa misma semana. Se entrega v\'ia \texttt{uCampus}.
+
+
+\begin{enumerate}
+		\item[\Pointinghand] {\bf Aunque no es necesario, s\'i puedes ocupar recursos externos, como Internet}.
+		\item[\Pointinghand] Es importante que estas l\'ineas corran bien: el usuario (yo) tiene que ser cap\'az de ver como \texttt{R} ejecuta cada l\'inea, sin estancarse.
+		\item[\Pointinghand] Es importante que vayas guiando al usuario (yo) sobre tu raciocinio. Aseg\'urate de comentar (usando el s\'imbolo \texttt{\#}).
+\end{enumerate}
+
+% Final
+
+	\item {\bf Un trabajo final (20\%) y una presentaci\'on final (10\%)}: 30\% en total.\\
+
+
+En este curso, la actividad final es un trabajo grupal (20\%). Usando una base de datos, t\'u y tu grupo deber\'an responder una serie de preguntas. El producto final (i.e. lo que debes entregar) consiste en un \emph{script} de \texttt{R}. La nota es grupal (i.e. todo el grupo recibir\'a la misma nota). {\bf Los grupos ser\'an de 2 personas, excepto por un grupo que ser\'a de 3}.
+\\
+\\
+{\bf El paper (\emph{script}) se entrega \underline{en uCampus}} el {\bf 18 de noviembre}. Se puede entregar antes, pero una vez cerrado el plazo, {\bf no se recibir\'an trabajos}. Los \emph{scripts} que se entreguen tarde o v\'ia \emph{email} tendr\'an un 1 (sin opci\'on a reclamo). {\bf No hay excepciones}. 
+\\
+\\
+En un formato muy parecido a una conferencia acad\'emica, tendr\'as (junto a tu grupo) que presentar los principales hallazgos (10\%). Todos/as presentan. Cada presentaci\'on debe durar no menos de 15 minutos, pero nunca m\'as de 20 minutos. Las presentaciones se realizar\'an el {\bf 20 y 21 de noviembre}.
+
+
+
+
+
+
+
+%\\
+%\\
+%Les recomiendo verme en \href{https://calendly.com/bahamonde/officehours}{mis office hours} \emph{antes} del plazo de entrega. Si quieres, \href{mailto:\filetext}{env\'iame un email} con tu borrador, y yo te devolver\'e comentarios. V\'elo como una pre-correcci\'on. Esto es voluntario. Tambi\'en puedes contactar al/la TA. {\bf No se procesar\'an \emph{reaction papers} durante fines de semana, y/o festivos}.
+
+
+\end{enumerate}
+
+
+\underline{En resumen}:
+
+\begin{table}[h]
+\begin{tabular}{ccc}
+							& \textbf{Porcentaje} & {\bf Porcentaje Acumulado} \\
+							\hline
+Participaci\'on, asistencia, \emph{pop-quizzes} (c\'atedra y ayudant\'ia) & 15\%       & 15\%                 \\
+\hline
+Evaluaci\'on pr\'actica en clases: \#1 & 5\% & 20\%                 \\
+Evaluaci\'on pr\'actica en clases: \#2 & 5\% & 25\%                 \\
+Evaluaci\'on pr\'actica en clases: \#3 & 5\% & 30\%                 \\
+Evaluaci\'on pr\'actica en clases: \#4 & 5\% & 35\%                 \\
+Evaluaci\'on pr\'actica en clases: \#5 & 5\% & 40\%  \\
+\hline
+Tarea pr\'actica para la casa: \#1 	 & 10\% & 50\%    \\
+Tarea pr\'actica para la casa: \#2 	 & 10\% & 60\%    \\
+Tarea pr\'actica para la casa: \#3 	 & 10\% & 70\%    \\
+\hline
+Trabajo final grupal & 20\% & 90\% \\
+Presentaci\'on grupal & 10\% & 100\% \\
+\hline             
+\end{tabular}
+\end{table}
+
+\subsection*{Ayudant\'ia}
+
+Cada semana te reunir\'as con tu ayudante (``TA''). Ah\'i tendr\'as otra oportunidad para ejercitar y seguir profundizando otras tem\'aticas pendientes. En esta oportunidad, tambi\'en se revisar\'an aspectos m\'as formales de las humanidades y las ciencias sociales. 
+
+\subsection*{Calendario}
+
+
+\begin{enumerate}
+	\item {\bf Funciones b\'asicas en \texttt{R}}
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 7 de agosto (clase \#1)}:
+				\begin{itemize} 
+					\item[$\circ$] Introducciones: programa de curso, requerimientos, expectativas, etc.
+					\item[$\circ$] \emph{Qu\'e es \texttt{R}?} Instalaci\'on de \texttt{R} y \texttt{RStudio}.
+					\item[$\circ$] {\bf Lecturas}: 
+						\begin{itemize} 
+							\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: Cap. 1.\phantom{\textcite{Wooldridge2010}}
+							\item[$\diamond$] Urdinez y Cruz, 2019. \href{https://arcruz0.github.io/libroadp/index.html}{\emph{AnalizaR Datos Políticos}}: Cap. 2.\phantom{\textcite{Urdinez:2019aa}}
+						\end{itemize}
+					% Monogan2015 Ch. 1
+				\end{itemize}
+			\end{itemize}
+
+
+
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 8 de agosto (clase \#2)}:
+				\begin{itemize} 
+					\item[$\circ$] Funciones b\'asicas: promedio, \texttt{help()}, operadores, tipos de objetos (\emph{character}, \emph{arrays}, fechas, listas, \emph{dataframes}).
+					\item[$\circ$] Cargando bases de datos (I): formatos, etiquetas, tipos de variables, descripci\'on b\'asica. % ch 2 fox r companion, Monogan2015 Ch 2, https://stats.idre.ucla.edu/stat/data/intro_r/intro_r.html#(12)
+					\item[$\circ$] {\bf Lecturas}: 
+					\begin{itemize}
+						\item[$\diamond$] Urdinez y Cruz, 2019. \href{https://arcruz0.github.io/libroadp/index.html}{\emph{AnalizaR Datos Políticos}}: Cap. 5.\phantom{\textcite{Urdinez:2019aa}}
+					\end{itemize}
+				\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 14 de agosto (clase \#3)}:
+					\begin{itemize} 
+						{\color{red}\item[\Pointinghand] Evaluaci\'on pr\'actica en clases: \#1}. {\bf  Suspendida por paro. Se entregara el \emph{script} con preguntas el 13 de agosto. Deadline: 14 agosto, 11 PM (uCampus)}.
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 15 de agosto (clase \#4)}: {\bf Feriado. Se recuper\'a la pr\'oxima clase.}
+					\begin{itemize} 
+				\item[$\circ$] Cargando bases de datos (II): transformaciones, creaci\'on de nuevas variables.
+				\item[$\circ$] Manipulando bases de datos: generaci\'on de matrices y \emph{dataframes}, \texttt{merge}, \texttt{append}. Logs.  %(p. 35 Gill, Essential Math)
+					\end{itemize}
+					% Monogan2015 Ch 2, 
+			\end{itemize}
+
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 21 de agosto (clase \#5)}: {\bf Paro. Se recupera la siguiente clase.}
+					\begin{itemize} 
+						\item[$\circ$] Visualizaci\'on de datos (I): \emph{bar plots}, \emph{scatter plots}, histogramas, \emph{time series plots}. % fox Applied: ch. 3, fox companion ch's 3.1-3.3, Monogan2015 Ch 3
+						\item[$\circ$] {\bf Lecturas}:
+							\begin{itemize}
+								\item[$\diamond$] Urdinez y Cruz, 2019. \href{https://arcruz0.github.io/libroadp/index.html}{\emph{AnalizaR Datos Políticos}}: Cap. 4.\phantom{\textcite{Urdinez:2019aa}}
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 22 de agosto (clase \#6)}:
+					\begin{itemize} 
+				\item[$\circ$] Visualizaci\'on de datos (II): \emph{plots} m\'as complejos (por categor\'ias), mapas.
+				% Monogan2015 Ch 3, fox ch 3
+				\item[$\circ$] {\bf Lecturas}: 
+					\begin{itemize}
+						\item[$\diamond$] Urdinez y Cruz, 2019. \href{https://arcruz0.github.io/libroadp/index.html}{\emph{AnalizaR Datos Políticos}}: Cap. 15.\phantom{\textcite{Urdinez:2019aa}}
+					\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 28 de agosto (clase \#7)}. {\color{red}CLASE SUSPENDIDA POR ACTIVIDADES ESTUDIANTILES}:
+					\begin{itemize} 
+				{\color{red}\item[\Pointinghand] Evaluaci\'on pr\'actica \#2. Por APSA, se har\'a desde la casa}.
+				{\color{orange}\item[$\bigstar$] Entrega del temario para la tarea pr\'actica para la casa: \#1}. Deadline: 1 de septiembre, 12 PM, \texttt{uCampus}.
+					\end{itemize}
+			\end{itemize}
+
+
+
+
+
+
+	\item {\bf Estad\'istica descriptiva en \texttt{R}}
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 29 de agosto (clase \#8)}. {\color{red}CLASE SUSPENDIDA POR ACTIVIDADES ESTUDIANTILES}:
+					\begin{itemize} 
+				\item[$\circ$] Estad\'istica descriptiva (I): Teor\'ia de probabilidades: distribuciones, varianza. Clase re-programada para la clase \# 9. % sy_1/week 5, Monogan2015 Ch 4, Fox_Appendices (App D), Chs. 7  (Gill, Essential Math)
+					\end{itemize}
+			\end{itemize}
+
+% Hoy Sep 5: 
+
+	% 1) Estad\'istica descriptiva (I): Teor\'ia de probabilidades: distribuciones, varianza. Clase re-programada para la clase \# 9. % sy_1/week 5, Monogan2015 Ch 4, Fox_Appendices (App D), Chs. 7  (Gill, Essential Math)
+
+	% 2) Estad\'istica descriptiva (II): binomial, normal, otras; simulaci\'on. % sy_1/week 6, fox applie ch. 4, Fox_Appendices (App D)., Chs. 8 (Gill, Essential Math).
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 4 de septiembre (clase \#9)}:
+					\begin{itemize} 
+				\item[$\circ$] Estad\'istica descriptiva (II): binomial, normal, otras; simulaci\'on. % sy_1/week 6, fox applie ch. 4, Fox_Appendices (App D)., Chs. 8 (Gill, Essential Math).
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 5 de septiembre (clase \#10)}:
+					\begin{itemize} 
+				{\color{red}\item[\Pointinghand] Evaluaci\'on pr\'actica en clases: \#3}.
+				{\color{orange}\item[$\bigstar$] Entrega del temario para la tarea pr\'actica para la casa: \#2}. Deadline: 8 de septiembre, 12 PM, \texttt{uCampus}.
+
+					\end{itemize}
+			\end{itemize}
+
+
+
+	\item {\bf Introducci\'on a modelos lineales en \texttt{R}}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 11 de septiembre (clase \#11)}:
+					\begin{itemize} 
+						\item[$\circ$] Introducci\'on a modelos lineales: \emph{Que es OLS?}
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize}
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: 2.1 y 2.2.\phantom{\textcite{Wooldridge2010}}
+								% fox ch 5
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 12 de septiembre (clase \#12)}:
+					\begin{itemize} 
+						\item[$\circ$] La mec\'anica detr\'as del OLS (I): matrices ``a mano''.
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize}
+								\item[$\diamond$] Krishnan Namboodiri, 1984. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Namboodiri.pdf}{\emph{Matrix Algebra, an Introduction}}. Sage: Caps. 1 y 2.\phantom{\textcite{Namboodiri1984}}
+						% Monogan2015 Ch. 10.3.1
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 25 de septiembre (clase \#13)}:
+					\begin{itemize} 
+						\item[$\circ$] La mec\'anica detr\'as del OLS (II): matrices en \texttt{R}.
+						% Monogan2015 Ch. 10.3.2
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 26 de septiembre (clase \#14)}:
+					\begin{itemize} 
+						\item[$\circ$] Coeficientes. % ex's C2.1 Wooldridge.
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize}
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: Caps. 3.1 y 3.2.\phantom{\textcite{Wooldridge2010}}
+								% como interpretar los coeficientes, fox & weisberg 4.3 till p 177
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 2 de octubre (clase \#15)}:
+					\begin{itemize} 
+						{\color{red}\item[\Pointinghand] Evaluaci\'on pr\'actica en clases: \#4}.
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 3 de octubre (clase \#16)}:
+					\begin{itemize} 
+						\item[$\circ$] Intervalos de confianza. % sy_1 W8
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize}
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: Cap. 4.3.\phantom{\textcite{Wooldridge2010}}
+								% Fox & weisberg 4.3.1, fox 6.1.3, montgomery 2.4
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 9 de octubre (clase \#17)}:
+					\begin{itemize} 
+						\item[$\circ$] Test de hip\'otesis (\emph{t test}), errores Tipo I y II,  significaci\'on estad\'istica (\emph{p-values}). % sy_1 W9, https://cardiomoon.github.io/webr/, 
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize}
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: Cap. 4.2.\phantom{\textcite{Wooldridge2010}}
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 10 de octubre (clase \#18)}:
+					\begin{itemize} 
+						\item[$\circ$] Propiedades num\'ericas del OLS, Gauss-Markov, sesgo de variable omitida. % sy_1 W10
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize} 
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: pp. 89-94, 102-104.\phantom{\textcite{Wooldridge2010}}
+							\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 16 de octubre (clase \#19)}:
+					\begin{itemize} 
+						\item[$\circ$] \emph{Goodness of fit}, ``coeficiente de determinaci\'on'' (r$^2$), predicci\'on. 
+						\item[$\circ$] {\bf Lecturas}:
+							\begin{itemize} 
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: pp. 40-41, Cap. 6.3.\phantom{\textcite{Wooldridge2010}}
+								\item[$\diamond$] Gary King, 1986. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/King.pdf}{\emph{How Not to Lie With Statistics: Avoiding Common Mistakes in Quantitative Political Science}}. American Journal of Political Science(30): 666-687.
+
+							\end{itemize}
+						% sy_1 W11, Montgomery 2.5
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 17 de octubre (clase \#20)}:
+					\begin{itemize} 
+						{\color{red}\item[\Pointinghand] Evaluaci\'on pr\'actica en clases: \#5}. {\bf Se entrega el lunes 21 de octubre a las 11.59 PM en la secci\'on ``Tareas'' de uCampus.} % graficos circulares de los errores.
+					\end{itemize}
+					% Monogan2015 Ch 6.2
+			\end{itemize}
+
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 23 de octubre (clase \#21)}:
+					\begin{itemize} 
+						\item[$\circ$] Problemas y \emph{post-estimation}: multicolinealidad perfecta, heteroskedasticidad, no linearidad, \emph{outliers}, no normalidad de residuos, auto-correlaci\'on. % sy_1 W14, W15, explicar que multicol causa VARIANCE INFLATION (matrix form),
+						\item[$\circ$] {\bf Lecturas}: 
+						\begin{itemize}
+						\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: Caps. 8 y 9.5.\phantom{\textcite{Wooldridge2010}}
+						\end{itemize}
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 24 de octubre (clase \#22)}:
+					\begin{itemize} 
+						\item[$\circ$] Presentaci\'on de resultados: tablas, gr\'aficos. Variables independientes categoricas.
+						\item[$\circ$] {\bf Lecturas}: 
+							\begin{itemize}
+								\item[$\diamond$] Jeffrey Wooldridge, 2010. \href{https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Readings/Wooldridge.pdf}{\emph{Introducci\'on a la Econometr\'ia. Un Enfoque Moderno}}. Cengage Learning: Cap. 4.6.\phantom{\textcite{Wooldridge2010}}
+							\end{itemize}
+				{\color{orange}\item[$\bigstar$] Entrega del temario para la tarea pr\'actica para la casa: \#2}. Deadline: 27 de octubre, 12 PM, \texttt{uCampus}.
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 30 de octubre (clase \#23)}:
+					\begin{itemize} 
+						\item[$\circ$] Asignaci\'on aleatoria de bases de datos, y entrega de preguntas. Conformaci\'on de grupos de trabajo.
+						\item[$\circ$] {\bf Laboratorio \#1}: Trabajo en grupo, y resoluci\'on de preguntas.
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 31 de octubre (feriado evang\'elico)}.
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 6 de noviembre (clase \#24)}:
+					\begin{itemize} 
+						\item[$\circ$] {\bf Laboratorio \#2}: Trabajo en grupo, y resoluci\'on de preguntas.
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 7 de noviembre (clase \#25)}:
+					\begin{itemize} 
+						\item[$\circ$] {\bf Laboratorio \#3}: Trabajo en grupo, y resoluci\'on de preguntas.
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 13 de noviembre (clase \#26)}:
+					\begin{itemize} 
+						\item[$\circ$] {\bf Laboratorio \#4}: Trabajo en grupo, y resoluci\'on de preguntas.
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 14 de noviembre (clase \#27)}:
+					\begin{itemize} 
+						\item[$\circ$] {\bf Laboratorio \#5}: Trabajo en grupo, y resoluci\'on de preguntas.
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 18 de noviembre}:
+					\begin{itemize} 
+						{\color{red}\item[\Pointinghand] Entrega del trabajo final (script) v\'ia \texttt{uCampus}}.
+					\end{itemize}
+			\end{itemize}
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 20 de noviembre (clase \#28)}:
+					\begin{itemize} 
+						\item[$\circ$] Presentaciones finales (I). 
+					\end{itemize}
+			\end{itemize}
+
+
+
+			\begin{itemize} 
+				\item[$\bullet$] {\bf 21 de noviembre (clase \#29)}:
+					\begin{itemize} 
+						\item[$\circ$] Presentaciones finales (II). 
+					\end{itemize}
+			\end{itemize}
+
+
+
+
+
+
+
+			
+
+
+			
+
+\end{enumerate}
+
+
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\printbibliography
+
+
+
+\end{document}
+
+
