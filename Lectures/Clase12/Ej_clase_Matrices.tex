@@ -1,0 +1,321 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article}
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+
+%\usepackage[light, math]{iwona}
+%\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancybox, fancyvrb, calc}
+\usepackage[svgnames]{xcolor}
+
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT ID (Department, Professor, Course, etc.) 
+%----------------------------------------------------------------------------------------
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Ejercicio en Clases $\bullet$ Pop-Quiz \#1} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	MY PACKAGES 
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath}	
+%\usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{caption}
+\usepackage{etex}
+%\usepackage[export]{adjustbox}
+%\usepackage{afterpage}
+%\usepackage{filecontents}
+\usepackage{color}
+\usepackage{latexsym}
+\usepackage{lscape}				%\begin{landscape} and \end{landscape}
+\usepackage{amsfonts}
+%\usepackage{mathabx}
+\usepackage{amssymb}
+%\usepackage{dashrule}
+%\usepackage{txfonts}
+%\usepackage{pgfkeys}
+%\usepackage{framed}
+\usepackage{tree-dvips}
+\usepackage{caption}
+%\usepackage{fancyvrb}
+%\usepackage{pgffor}
+\usepackage{xcolor}
+%\usepackage{pxfonts}
+\usepackage{wasysym}
+\usepackage{authblk}
+%\usepackage{paracol}
+\usepackage{setspace}
+%\usepackage{qtree}
+%\usepackage{tree-dvips}
+\usepackage{sgame}				% shouldn't have neither array nor tabularx packages
+\usepackage{tikz}
+%\usetikzlibrary{trees}
+\usepackage[latin1]{inputenc}
+%\label{tab:1} 		%\autoref{tab:1}	%ocupar para citar.
+% \hyperlik{table1}	\hypertarget{table1} 
+% \textquoteright			%apostrofe
+\usepackage{hyperref} 		%desactivar para link rojos
+\usepackage{natbib}
+%\usepackage{proof} 			%for proofs
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Other ADDS-ON
+%----------------------------------------------------------------------------------------
+
+% independence symbol \independent
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
+% VERBATIM WITH BACKGROUND COLOR
+\newenvironment{colframe}{%
+  \begin{Sbox}
+    \begin{minipage}
+      {\columnwidth%-\leftmargin-\rightmargin-6pt
+      }
+    }{%
+    \end{minipage}
+  \end{Sbox}
+  \begin{center}
+    \colorbox{LightSteelBlue}{\TheSbox}
+  \end{center}
+}
+
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat$'$s bookmarks
+    pdftoolbar=true,        % show Acrobat$'$s toolbar?
+    pdfmenubar=true,        % show Acrobat$'$s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=ForestGreen,          % color of internal links (change box color with linkbordercolor)
+    citecolor=ForestGreen,        % color of links to bibliography
+    filecolor=ForestGreen,      % color of file links
+    urlcolor=ForestGreen           % color of external links
+}
+
+
+% PROPOSITIONS
+\newtheorem{proposition}{Proposition}
+
+%\linespread{1.5}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+%\title{\vspace{-15mm}\fontsize{18pt}{7pt}\selectfont\textbf{Experimental Economists and Psychologists: Two Worlds Apart}} % Article title
+
+%\author[1]{
+%\large
+%\textsc{H\'ector Bahamonde}\\ 
+%\thanks{}
+%\normalsize Political Science Dpt. $\bullet$ Rutgers University \\ % Your institution
+%\normalsize \texttt{e:}\href{mailto:hector.bahamonde@rutgers.edu}{\texttt{hector.bahamonde@rutgers.edu}}\\
+%\normalsize \texttt{w:}\href{http://www.hectorbahamonde.com}{\texttt{www.hectorbahamonde.com}}
+%\vspace{-5mm}
+%}
+%\date{\today}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%\maketitle % Insert title
+
+
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%\begin{abstract}
+%	ABSTRACT
+%\end{abstract}
+
+
+%----------------------------------------------------------------------------------------
+%	CONTENT
+%----------------------------------------------------------------------------------------
+
+%\graphicspath{
+%{/Users/hectorbahamonde/RU/Term5/Experiments_Redlawsk/Experiment/Data/}
+%}
+\hspace{-5mm}{\bf Profesor}: H\'ector Bahamonde.\\
+\texttt{e:}\href{mailto:hector.bahamonde@uoh.cl}{\texttt{hector.bahamonde@uoh.cl}}\\
+\texttt{w:}\href{http://www.hectorbahamonde.com}{\texttt{www.hectorbahamonde.com}}\\
+{\bf Curso}: M\'etodos de Investigaci\'on.
+
+\section*{Problem Set 1}
+
+\begin{enumerate}
+\item Dada la siguiente matriz,
+\[u=
+\begin{bmatrix}
+43 & 41\\
+99 & 32\\ 
+12 & 23\\ 
+42 & 14\\ 
+\end{bmatrix}
+\] Definir $u^{\top}$.
+\item Dado el escalar $\beta=-12$,
+\[x=
+\begin{bmatrix}
+2 & 6 & 5 & 4 & 3\\
+\end{bmatrix}
+\] Define $x^{\top}\cdot\beta$.
+\item Dada la matriz,
+\[x=
+\begin{bmatrix}
+2 & 4\\
+7 & 9\\ 
+\end{bmatrix}
+\] Define $x^{\top}\cdot{x}$.
+\item Dado el vector transpuesto $v^{\top}_{1\times 4}$
+\[v^{\top}=
+\begin{bmatrix}
+7 & 8 & 9 & 10\\ 
+\end{bmatrix}
+\] el y el vector $u_{4\times 1}$
+\[u=
+\begin{bmatrix}
+7 \\
+8 \\
+9 \\
+10\\ 
+\end{bmatrix}
+\]
+encuentra (1) si $v^{\top}_{1\times 4}$ y $u_{4\times 1}$ son conformables y (2) si el producto $u_{4\times 1} \cdot v^{\top}_{1\times 4}$ existe. Si $u_{4\times 1} \cdot v^{\top}_{1\times 4}$ es posible de ser definido, encuentra el producto.
+
+\item Dado el vector $u$,
+\[u=
+\begin{bmatrix}
+7 \\
+8 \\
+9 \\
+10\\ 
+\end{bmatrix}
+\] y el vector $v$,
+\[v=
+\begin{bmatrix}
+11\\
+12 \\
+13 \\
+14\\ 
+\end{bmatrix}
+\]
+encuentra (1) el tama\~no de cada vector, (2) si el producto $v\cdot u$ existe, y (3) cu\'al ser\'ia el tama\~no final de $v\cdot u$ (si $v\cdot u$ existe). Repite las mismas tres preguntas para la relaci\'on $v^{\top}\cdot u$.
+
+\newpage
+
+\section{Soluciones}
+
+\begin{enumerate}
+	\item \[u^{\top}=
+					\begin{bmatrix}
+					43  & 99  & 12 &  42 \\
+					41  & 32  & 23 &  14 \\
+					\end{bmatrix}
+					\]
+
+	\item \[x^{\top}\times\beta=
+					\begin{bmatrix}
+					2 \\
+					6 \\
+					5 \\
+					4 \\
+					3 \\
+					\end{bmatrix} \times -12 = \begin{bmatrix}
+																-24 \\
+																-72 \\
+																-60 \\
+																-48 \\
+																-36 \\
+												\end{bmatrix}
+					\] 
+
+	\item \[x^{\top}\times x=
+					\begin{bmatrix}
+					53  &  71\\
+					71  & 97 \\
+					\end{bmatrix} 
+			\] 
+
+
+	\item (a) S\'i son conformables. (b) El producto existe y est\'a definido de la siguiente manera: \[ v^{\top}_{1\times 4} \times u_{4\times 1} = 
+					\begin{bmatrix}
+					294\\
+					\end{bmatrix} 
+			\]mientras que \[ u_{4\times 1} \times v^{\top}_{1\times 4} = \begin{bmatrix}
+					49 & 56 & 63 &  70\\
+					56 & 64 & 72 &  80\\
+					63 & 72 & 81 &  90\\
+					70 & 80 & 90 & 100\\
+					\end{bmatrix} 
+			\] {\bf F\'ijate que los n\'umeros de adentro determinan si existe comformabilidad (si son iguales, ambas matrices son comformables), mientras que los de afuera determinan la dimensi\'on final del producto de la matr\'iz}.
+
+
+
+	\item (1.1) 1$\times$4 ambos. (2.1) No existe. (3.1) NA. (1.2) 4$\times$1 y 1$\times$4, respectivamente. (2.2) Existe. (3.2) El producto est\'a definido de la siguiente manera: \[ v^{\top}  \times u = 
+					\begin{bmatrix}
+					430 \\
+					\end{bmatrix} 
+			\] 
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+\end{document}
