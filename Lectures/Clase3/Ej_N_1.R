@@ -2,15 +2,15 @@
 
 # Nombre:
 # Fecha:
-# Curso: Métodos de Investigación.
+# Curso: Metodos Cuantitativos I
 # Prof. Héctor Bahamonde.
 
 #################################################################
 # 1
 # Crea una base de datos con todos los cursos que tomaste el 
 # semestre pasado. La base debe incluir las siguientes variables: 
-# (a) curso (curso), (b) nota (nota), (c) nombre del profesor (nomprof), 
-# genero del profesor (genprof), universidad donde tomaste el curso (u). 
+# (a) curso ("curso"), (b) nota ("nota"), (c) nombre del profesor ("nomprof"), 
+# genero del profesor ("genprof"), universidad donde tomaste el curso ("u"). 
 # Los nombres de las columnas están en paréntesis. 
 #################################################################
 

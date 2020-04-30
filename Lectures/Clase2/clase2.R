@@ -22,9 +22,8 @@
 
 ## Instalando paquetes
 install.packages("ggplot2") # Esta es la libreria de graficos mas potentes que existe. 
-
-## Una vez el paquete esta instalado, es necesario cargarlo.
 library(ggplot2)
+
 
 ### Anda a "Packages", y busca la libreria que acabamos de instalar. 
 ### En el buscador, escribe "ggplot2", y comprueba que hay un ticket al lado de "ggplot2".
@@ -39,6 +38,7 @@ library(ggplot2)
 
 # Problema: necesitas crear una secuencia de numeros, por ej. del 1 al 10. Ocupa la funcion "seq". Pero no sabes ocuparla.
 help(seq)
+help(secuencia)
 
 # Ahora, la pestana "help" se abre. Lee el menu de ayuda.
 # Ahora, escribamos la funcion.
@@ -53,7 +53,7 @@ seq(from = 1, to = 10, by=2)
 seq(10, 1, -2)
 ## Fijate que tuvimos que especificar que la secuencia va de 10 a 1, en vez de 1 a 10.
 
-# Esa eran frecuencias. Ahora veamos repeticiones.
+# Esas eran frecuencias. Ahora veamos repeticiones.
 ## help(seq) asume que tu sabes que la funcion se llama "seq". Que pasa si no tienes idea?
 ## Pidamos ayuda en general...Lo que necesitamos es "repeat", o "repetition", o "repeated"....Sabemos que empieza con "rep"
 ??rep
@@ -63,7 +63,6 @@ rep("esta es la mejor clase del semestre", 100)
 
 # combinemos las funciones seq y rep. Usemos una estructura "anidada" (i.e. una funcion dentro de otra).
 rep(seq(1, 4, 1), 5)
-
 
 
 ##################
@@ -107,9 +106,9 @@ ls() # nada.
 ##################
 
 # Vector numerico
-vector.n = c(1,2,3, 4)
+vector.n = c(1,2,3,4)
 vector.n
-## En este vector, hemos incluido 3 numeros, y un texto. Es un vector numerico.
+## En este vector, hemos incluido 4 numeros. Es un vector numerico.
 
 # Vector de texto
 vector.t = c("uno", "dos", "tres", "cuatro")
@@ -123,7 +122,7 @@ vector.n.2
 vector.n.2 > vector.n
 
 # acceder al segundo elemento de un vector
-vector.n.2[2]
+vector.n.2[40]
 
 
 ##################
@@ -134,13 +133,13 @@ vector.n.2[2]
 mi.informacion <- list(
   clases=c("Contabilidad General", "Metodos", "Estadistica I"),
   profes=c("X", "HB", "Y"),
-  WhatsApp=569475759
+  WhatsApp="+569475759"
   )
 
 # accedamos a un elemento por posicion.Posicion "2" (profes)
 mi.informacion[[2]]
 
-# accedamos a un elemento por nomnbre
+# accedamos a un elemento por nombre
 mi.informacion$clases
 
 # accedamos a un elemento por nombre y posicion
@@ -159,7 +158,7 @@ a <- matrix(1:6, nrow=2)
 a[2,3]
 
 # all rows column 2
-b[,2]
+a[,2]
 
 # all columns row 1
 a[1,]
@@ -205,10 +204,10 @@ base.de.datos
 summary(base.de.datos)
 
 ## Prestige
-install.packages("car") # instalemos la base, que viene en la lubreria "car"
-library(car) # ahora, carguemos la base, que viene en la libreria "car"
+install.packages("car") # instalemos la base, que viene en la libreria "car"
+library(car) # ahora, carguemos la base que viene en la libreria "car"
 
-reloa## Breve inspeccion de la base
+## Breve inspeccion de la base
 head(Prestige)
 
 ## Veamos como se ve toda la base
@@ -226,7 +225,7 @@ summary(Prestige)
 
 
 ## Funcion if/else
-Prestige$prestige.2<-ifelse(Prestige$prestige > mean(Prestige$prestige), "alto","bajo")
+Prestige$prestige.2 <- ifelse(Prestige$prestige > mean(Prestige$prestige), "alto","bajo")
 
 ## Etiquetas:
 is(Prestige$type) # que es?
@@ -251,9 +250,12 @@ colnames(Prestige)
 Prestige.drop.1 = select(Prestige,-c(type, census, prestige))
 colnames(Prestige.drop.1)
 
-### OK. DF2 tendra todo menos type, census, prestige
+### OK. DF2 tendra todo menos education e income
 Prestige.drop.2 = select(Prestige,-c(education, income))
 colnames(Prestige.drop.2)
 
-### Porblema: ahora queremos hacer un "merge" de las dos DF's. El unico elemento en comun, es la variable "women"
-Prestige.merge <- merge(Prestige.drop.1, Prestige.drop.2,by=c("women")) 
+### Problema: ahora queremos hacer un "merge" de las dos DF's. El unico elemento en comun, es la variable "women"
+# "Merge" es util cuando queremos combinar dos datasets. Por ej., si estudiamos economia politica, y queremos ver el 
+# el efecto de la democracia en el PIB, probablemente tengamos que buscar una base de datos de ciencia politica (donde este la
+# variable "democracia") y otra base de datos de economia (donde este la variable "PIB"). Ahi hariamos un merge por pais.
+Prestige.merge <- merge(Prestige.drop.1, Prestige.drop.2, by = c("women")) 
