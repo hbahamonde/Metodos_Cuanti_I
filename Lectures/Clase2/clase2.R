@@ -174,26 +174,39 @@ c = as.Date('1/17/2001',format='%m/%d/%Y')
 # ahora R entiende que una cantidad sea mayor (mas reciente) que otra (mas antigua)
 a>b
 
+# crear texto
+texto = "2001-01-17"
+
+c==texto # compara ambos textos (que son iguales).
+c>text # ya no funciona porque compara un texto con una fecha.
+
 ##################
 ## Tipos de objetos: Dataframes (bases de datos)
 ##################
 
+
 base.de.datos <- data.frame(
         diabetico = c(TRUE, FALSE, TRUE, FALSE), 
-        kilos = c(65, 69, 71, 73))
+        kilos = c(65, 69, 71, 73),
+        nombre = c("Pedro", "Juan", 'Diego', "Maria")
+        )
 
+# describir lo basico de un df: head
+head(base.de.datos)
+
+# describir lo basico de un df: "View"
 View(base.de.datos) # Igual a un Excel
 
 base.de.datos[3,2] # fila 3, columna 2
 
 base.de.datos[1:2, "kilos"] # filtrando, pero usando el nombre de la columna. Para las filas, la secuencia de los dos primeros elementos. 
-base.de.datos[,"diabetico"] # todas las filas de la columna "diabetico"
+base.de.datos[ ,"diabetico"] # todas las filas de la columna "diabetico"
 
 ## Nombres de las Columnas
 colnames(base.de.datos)
 
 ## Acabas de descubrir un error. No eran kilos, si no que "edad". Cambia el nombre de las columnas.
-colnames(base.de.datos) <- c("diabetico", "edad")
+colnames(base.de.datos) <- c("diabetico", "edad", "nombre")
 
 ## Comprueba...
 colnames(base.de.datos)
@@ -235,7 +248,7 @@ levels(Prestige$type) # que etiquetas tiene?
 ## Recodificar: de ENG a ESP
 install.packages("plyr") 
 library(plyr)
-Prestige$type.2 <- revalue(Prestige$type, c("bc"="tecnico", "prof"="profesional", "wc"="oficinista"))
+Prestige$type.2 <- revalue(Prestige$type, c("bc"="Tecnico", "prof"="Profesional", "wc"="Oficinista"))
 
 ## Funcion Drop
 install.packages("dplyr") 
