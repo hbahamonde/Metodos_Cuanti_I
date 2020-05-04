@@ -210,3 +210,8 @@ hist(Prestige$log.women.mas.uno, breaks = 5) # Ahora grafiquemos de nuevo, y vea
 hist(Prestige$women, breaks = 5) # Comparemos con antes
 
 # 7. Qué ganamos y que perdemos al sacar el log de una variable?
+
+# Resumen de hoy
+# 1. Vimos algunos problemas con "merge" (metodo para pegar columnas).
+# 2. Vimos como pegar filas usando "rbind" (metodo para pegar filas).
+# 3. Vimos como "transformar variables".
