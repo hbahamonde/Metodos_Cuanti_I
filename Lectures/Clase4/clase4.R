@@ -29,11 +29,11 @@ library(dplyr)
 ### que columnas tiene el DF Prestige?
 colnames(Prestige)
 
-### OK. DF1 tendra todo menos "education", "income", "women" 
-Prestige.drop.1 = select(Prestige,-c(type, census, prestige))
+### DF1 tendra todo menos "education", "income", "women", "prestige"
+Prestige.drop.1 = select(Prestige,-c(type, census))
 colnames(Prestige.drop.1)
 
-### OK. DF2 tendra todo menos "income"   "prestige" "census"   "type" 
+### DF2 tendra todo menos "income"   "prestige" "census"   "type" 
 Prestige.drop.2 = select(Prestige,-c(education, women))
 colnames(Prestige.drop.2)
 
@@ -43,14 +43,43 @@ colnames(Prestige.drop.2)
 
 ### Problema: ahora queremos hacer un "merge" (*pegar columnas*) de las dos DF's. El unico elemento en comun, es la variable "income".
 
-# Antes habiamos "merged" usando una variable categorica ("woman"). Ahora "mergiemos" una variable numerica. Para ello, tenemos que asegurarnos que la variable en comun es exactamente igual. 
+# Antes habiamos "merged" usando una variable categorica ("woman"). Ahora "mergiemos" una variable numerica. 
+
+# Pregunta: Cual es el riesgo de "mergiar" ocupando una variable categorica?
+
+# OK, volvamos al merge con variable numerica. Para hacer merge con variable numerica, tenemos que asegurarnos que la variable en comun sea exactamente igual. (En este caso, sabemos que es asi, porque nosotros acabamos de partir la base en dos; pero en otras situaciones, no lo sabremos. Suponiendo que la base de datos es GIGANTE, y que no podemos ir revisando fila por fila, La unica manera de solucionarlo es la siguiente:
 Prestige.drop.1$income == Prestige.drop.2$income # Ambas columnas son iguales.
 
 # Esto funciona si tenemos poquitas obs. Pero si tenemos muchas, es mejor organizar el resultado en una tabla.
+# Para eso, metemos el mismo comando de arriba, pero en la funcion "table" (tabla en espanol).
 table(Prestige.drop.1$income == Prestige.drop.2$income)
 
-# Que pasaria si revertimos el orden de una columna (usando "-c()"), entendera R que en verdad hablamos de lo mismo? Veamos
+# Que pasaria si revertimos el orden de una columna (usando la funcion "rev" de reverse), entendera R que en verdad hablamos de lo mismo? Veamos
 rev(Prestige.drop.1$income) == Prestige.drop.2$income # No, no son iguales. 
+
+# Veamoslo con una tabla
+table(rev(Prestige.drop.1$income) == Prestige.drop.2$income) # No, no son iguales. Pero, atencion, hay dos observaciones que por CASUALIDAD son iguales! Veamos cuales son. 
+
+# Fijense como "nestie" (de "nested") varios comandos.
+View(
+        data.frame(
+                Prestige.drop.1$income,
+                Prestige.drop.2$income,
+                c(rev(Prestige.drop.1$income) == Prestige.drop.2$income)
+        )
+)
+
+# OK. Dos profesiones ganan 3485. Veamos cual es.
+
+## Manera facil (usando "View" y despues filtrando):
+View(Prestige) # Y despues en el "Finder" (buscador), "3485"
+
+## Manera usando lenguaje de programacion
+Prestige[Prestige$income=="3485",]
+
+# Por que es importante saber estas manipulaciones en un curso de "estadistica inferencial"?
+
+# OK, volvamos al merge numerico.
 
 # En situaciones reales, nunca los datos estaran ordenados. Esta vez haremos un "merge desordenado".
 # Primero, desordenemos "Prestige.drop.1$income". Ocuparemos un comando para hacer un "reverse", y poner todo al reves.
@@ -67,12 +96,26 @@ Prestige.merge
 # Al ver Prestige.merge, comprobamos que aunque los datos esten desordenados, R los pegara.
 
 # Pregunta: por que no es muy bueno pegar por la variable "genero" como lo hicimos la clase pasada?
+# Pregunta: como podemos recontra asegurarnos de que estamos pegando ("merging") las columnas adecuadas. Por ejemplo, acabamos de darnos cuenta que "income" estaba (por casualidad) repetido. Como evitar estas situaciones?
+
+
+Prestige.merge.recontra.asegurados <- merge(Prestige.drop.1, Prestige.drop.2, by=c("income", "prestige"))
+# Fijense que ahora solo tenemos dos observaciones...veamos...
+
+nrow(Prestige.merge.recontra.asegurados) # use el comando "nrow" que es "number of rows"...o "numero de filas"
+
+# Solo tenemos dos porque ya con dos variables, R empieza a fijarse en el orden. Recuerden que habiamos puesto "income" en Prestige.drop.1 en reversa...Reversemos esa reversa (dejemoslo bien)...
+
+Prestige.drop.1$income <- rev(Prestige.drop.1$income)
+
+# Mergiemos de nuevo...
+Prestige.merge.recontra.asegurados <- merge(Prestige.drop.1, Prestige.drop.2, by=c("income", "prestige"))
 
 ############################################
 # Appending: añadiendo filas
 ############################################
 
-# En el ej anterior, anadimos columnas. Ahora anadamos filas. Es decir, alarguemos nuestra base datos.
+# En el ej anterior, anadimos columnas. Ahora anadamos filas. Es decir, alarguemos (hacia abajo) nuestra base datos.
 
 # Pregunta: cuando nosotros podriamos necesitar algo asi?
 
@@ -133,8 +176,7 @@ hist(Prestige$income, breaks=100) # Veamos esto con mas detalles. Agreguemos mas
 
 ## 1. Qué es el logaritmo de un numero? 
 ## 2. Por qué necesitamos sacarlo?
-## 3. Cual es el problema que tenemos abajo?
-log(Prestige$income) # que problema tenemos? 
+log(Prestige$income)
 ## 4. Por qué una transformación no afecta un analisis estadístico?
 
 # creemos otra variable ("income.log") que sea el logaritmo natural (de base 10), y peguemosla en la base de datos Prestige
@@ -162,9 +204,9 @@ Prestige$log.women.mas.uno = log(Prestige$women.mas.uno)
 
 head(Prestige) # Veamos...
 
-hist(Prestige$log.women.mas.uno, breaks = 10) # Ahora grafiquemos de nuevo, y veamos si el problema se resuelve.
+hist(Prestige$log.women.mas.uno, breaks = 5) # Ahora grafiquemos de nuevo, y veamos si el problema se resuelve.
 
 
-hist(Prestige$women, breaks = 10) # Comparemos con antes
+hist(Prestige$women, breaks = 5) # Comparemos con antes
 
 # 7. Qué ganamos y que perdemos al sacar el log de una variable?
