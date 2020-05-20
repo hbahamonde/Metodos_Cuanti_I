@@ -24,21 +24,21 @@ ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point() + geom_smooth(
 # Altamente customizable
 ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(col="steelblue", size=3) + geom_smooth(method="lm") # Color azul
 
-ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(col=state), size=3) + geom_smooth(method="lm") # Color by state
+ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(col=state), size=0.7) + geom_smooth(method="lm") # Color by state
 
-ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(col=state), size=3, alpha=0.5) + geom_smooth(method="lm") # Alpha
+ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(col=state), size=1, alpha=0.5) + geom_smooth(method="lm") # Alpha
 
 ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(shape=state), colour = "red", size=3, alpha=0.5) + geom_smooth(method="lm") # Forma del punto, segun estado.
 
 ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(shape=state), colour = "red", size=3, alpha=0.5) + geom_smooth(method="lm") + theme_bw() #  Cambio de "tema de colores"
 
-ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(shape=state), colour = "red", size=3, alpha=0.5) + geom_smooth(method="lm") + theme_bw() + labs(title="Area y Población", y="Población", x="Área", caption="Base de datos 'Midwest'") # Cambio en los titulos de los ejes.
+ggplot(midwest, aes(x=log(area), y=log(poptotal))) + geom_point(aes(shape=state), colour = "red", size=3, alpha=0.5) + geom_smooth(method="lm") + theme_bw() + labs(title="Area y Poblacion", y="Poblacion (log)", x="Area (log)", caption="Base de datos 'Midwest'") # Cambio en los titulos de los ejes.
 
 
 # en este grafico usamos geom_point dos veces. una para poner los puntos del log(poptotal) y otra para los puntos de "percblack" (% de Afro americanos). Este tipo de graficos se usa cuando queremos observar la relacion ente dos variables. Aqui no vemos que haya una relacion clara.
-ggplot(midwest, aes(x=area)) + 
+ggplot(midwest, aes(x=log(area))) + 
         geom_point(aes(y=log(poptotal)), colour = "red", size=3, alpha=0.5) + 
-        geom_point(aes(y=percblack), colour = "green", size=2, alpha=0.5) + 
+        geom_point(aes(y=log(percblack)), colour = "green", size=2, alpha=0.5) + 
         theme_bw() + 
         labs(title="Area y Población", y="Población", x="Área", caption="Base de datos 'Midwest'")
 
