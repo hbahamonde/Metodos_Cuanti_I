@@ -34,7 +34,13 @@ t(x) %*% x
 ###########################
 
 ## primero, encontrar determinante
-# det(x.transp%*%x)
+# det(t(x)%*%x)
+# 324
+
+## segundo, encontrar Adjacente
+## Multiples maneras. 
+
+# Hagamos el proceso de manera directa. Invirtamos 'x'
 
 # Usuarios MAC: asegurarse de tener XQuartz instalado
 # https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
@@ -49,9 +55,12 @@ inv(t(x)%*%x)
 ###########################
 
 # En Matriz
-options(scipen=999)
+options(scipen=99)
 inv(t(x) %*% x)%*%t(x)%*%y # beta
 
 # Usando el comando "lm"
-data = data.frame(x,y)
-lm(y~x, data)
+data = data.frame(
+        x=x[,2:3],
+        y=y)
+
+lm(y ~ x.1 + x.2, data)

@@ -23,8 +23,8 @@ graphics.off()
 ## beta1 (coeficiente).
 
 
-## En esta clase, pensaremos en la relacion que hay entre 'educacion' e 
-## 'ingresos'. Sera positiva? Negativa? Para responder esta pregunta,
+## En esta clase, pensaremos en la relacion que hay entre 'educacion' y 
+## 'prestigio'. Sera positiva? Negativa? Para responder esta pregunta,
 ## debes calcular beta1. Creo que estaremos de acuerdo en que la 
 ## variable independiente ('x', o 'la causa') es 'educacion', y la dependiente
 ## ('y', o 'el efecto') es 'prestigio'. Seria raro pensar que "el prestigio
@@ -81,6 +81,9 @@ graphics.off()
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load(car) # En este paquete, "vive" la base "Prestige" ("Prestigio").
 
+# Carga la base
+data(Prestige)
+
 # Mira como se ve la base de datos
 head(Prestige)
 
@@ -125,8 +128,8 @@ y = matrix(Prestige$prestige)
 # Invertir
 # inv()
 ## Recuerda cargar "matlib" para usar la funcion "inv()".
-### if (!require("pacman")) install.packages("pacman"); library(pacman)
-### p_load(matlib)
+if (!require("pacman")) install.packages("pacman"); library(pacman)
+p_load(matlib)
 
 # Multiplicar matrices
 # Por ejemplo x*x es  x%*%x
@@ -134,7 +137,7 @@ y = matrix(Prestige$prestige)
 # OK; ahora tu. Calcula b = (x'x)^-1x'y
 
 ######################################################################
-# Problema que tuvimos en clases:
+# Problema
 ######################################################################
 
 # Funciona
@@ -166,10 +169,7 @@ inv(t(x) %*% x) # funciona
 
 ######################################################################
 ## (4) Usando el comando 'plot', haz un grafico entre Prestigio y Educacion.
-
-
-
-
+data(Prestige)
 
 
 
