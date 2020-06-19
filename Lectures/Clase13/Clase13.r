@@ -71,7 +71,7 @@ graphics.off()
 ######################################################################
 
 ## Juan?
-
+# - 1
 
 ## Diego?
 
@@ -114,6 +114,7 @@ x # mira como se ve la nueva matrix "x"
 # Extrae la 'y'
 y = matrix(Prestige$prestige)
 
+y
 
 ######################################################################
 ## (2)
@@ -163,9 +164,10 @@ inv(t(x) %*% x) # funciona
 ## el comando "lm" (por "linear model"). El comando "lm" se ocupa asi:
 ## lm(y ~ x). Define 'y' como 'Prestige$prestige' y 'x' como 'Prestige$education'.
 
+modelo = lm(Prestige$prestige ~ Prestige$education)
 
-
-
+options(scipen=9999)
+summary(modelo)
 
 ######################################################################
 ## (4) Usando el comando 'plot', haz un grafico entre Prestigio y Educacion.
