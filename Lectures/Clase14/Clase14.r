@@ -86,6 +86,10 @@ densityplot(dat$error)
 # Veamos mas en detalle:
 summary(dat$error) # Que promedio tiene el error? 
 
+# Comparemos el error que computamos nosotros, con el descriptivo del error que calcula R
+round(median(dat$error),4) == round(median(reg.bivariada$residuals),4)
+## Noten que R nos hace el trabajo facil, y podemos acceder a los residuos que "viven" dentro del objeto del modelo.
+
 # Puntos importantes:
 # (1.1) Siempre se dice que "los errores se cancelan mutuamente"
 # (1.2) Ej.: error de medicion en encuestas (mentirosos). 
@@ -161,7 +165,7 @@ x
 
 # Fijate que la primera y la segunda columna significan lo mismo ("notas en matematicas").
 
-# Imaginate que la columna 1 es Pedro, y la columna 2 es Juan.
+# Imaginate que la fila 1 es Pedro, y la fila 2 es Juan.
 
 # Volvamos al modelo. Queremos ver que la ecuacion de regresion con dos variables
 # independientes que son identicas es imposible. Es decir, esto es imposible:
@@ -196,7 +200,7 @@ summary(lm(repression ~ democracy + democracy, dat)) # Que paso aqui?
 dat$democracy2 = dat$democracy # Enganando a R...
 summary(lm(repression ~ democracy + democracy2, dat)) # Que paso aqui?
 
-# Nuevamente det(x't)=0.
+# Nuevamente det(x'x)=0.
 
 # Tecnicamente, aqui tenemos problemas de "colinearidad perfecta"
 
