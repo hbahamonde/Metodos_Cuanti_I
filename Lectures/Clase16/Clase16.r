@@ -14,6 +14,8 @@ dat <- read.dta("cow.dta") # cargar base en  R (hasta el momento solo la habiamo
 # Estimar modelo lineal: relacion entre crecimiento economico y democracia, controlando por poblacion
 modelo.1 = lm(rgdpch ~ democracy + pop, dat)
 
+dat$log.pop = log(dat$pop)
+
 # (1) Que significa "controlando por"?
 
 # resumen del modelo
@@ -39,10 +41,11 @@ confint(modelo.1, level = 0.99) # 99% de confianza
 # en forma grafica tambien.
 
 # plotear CI
-# install.packages("coefplot")
-library(coefplot)
+# install.packages("coefplot", "ggplot2")
+library(coefplot, ggplot2)
 
-coefplot(modelo.1) # plot de coeficientes
+coefplot(modelo.1, strict=TRUE)
+
 
 # (1) Compara los numeros de la tabla "confint" y lo que ves en el grafico.
 # (2) Que es lo que vemos en este grafico?
@@ -129,6 +132,7 @@ library(matlib) # paquete para hacer operaciones con matrices.
 
 # Calculemos la Matriz de Varianza-Covarianza
 # Multiplicar sigma^2 por (x'x)^-1
+options(scipen=999)
 sigma.2 * inv(t(x) %*% x)
 
 # Pero habia un camino mas corto...
@@ -214,12 +218,12 @@ t = qt(1-.05/2, grados.de.libertad) # valores criticos de t, a un 95% de confian
 # confianza a ambos lados de la distribucion.
 
 # 
-10631.611789 + t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[1]  # (Intercept) 
-10631.611789 - t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[1]  # (Intercept) 
+10631.611789 + t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[1]  # (Intercept)  #  12127.13117506
+10631.611789 - t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[1]  # (Intercept)  #  9136.09240230
 
 #
-1638.874546  + t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[2]  # democracy 
-1638.874546  - t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[2]  # democracy 
+1638.874546  + t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[2]  # democracy  # 2097.753
+1638.874546  - t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[2]  # democracy  # 1179.996
 
 #
 0.002947     + t * sqrt(diag(sigma.2 * inv(t(x) %*% x)))[3]  # pop 

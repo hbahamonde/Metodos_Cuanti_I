@@ -33,7 +33,8 @@ graphics.off()
 # Cargar paquete para cargar bases que no son de R.
 # install.packages("foreign")
 library(foreign) # significa "foraneo"
-dat = read.dta("https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Lectures/Clase17/cow.dta")
+options(scipen = 1000000) # apagar notacion cientifica.
+dat = read.dta("https://github.com/hbahamonde/Metodos_Cuanti_I/raw/master/Lectures/Clase17/cow.dta")
 
 
 # Hoy pensaremos en que factores ayudan a subir la poblacion en los paises.
@@ -98,10 +99,10 @@ summary(modelo.1)
 # Plotear modelo
 # install.packages("coefplot")
 library(coefplot)
-coefplot(modelo.1) # plot de coeficientes
+coefplot(modelo.1, strict = T) # plot de coeficientes
 
 # mostrar el detalle de los intervalos de confianza
-confint(modelo.1)
+confint(modelo.1, strict = T)
 
 
 #################################################################
@@ -226,5 +227,6 @@ screenreg(modelo.1, ci.force = T) # nuestro paquete "screenreg" que ya conocemos
 #### delgadas, y precisas. Eso hace que encontremos independencia estadistica mas seguido.
 #### (2) Falsos positivos! 
 ## Tabla convencional
+library("texreg")
 screenreg(modelo.1, ci.force = F) # notan la diferencia?
 
