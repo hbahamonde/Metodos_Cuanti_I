@@ -83,7 +83,7 @@ graphics.off()
 
 
 # Inventemos las variables independientes
-set.seed(2019)
+set.seed(2020)
 x1 = rnorm(1000, 10) # como nunca, conocemos que el promedio REAL de esta variable es 10
 x2 = rnorm(1000, 20) # como nunca, conocemos que el promedio REAL de esta variable es 20
 x3 = rnorm(1000, 30) # como nunca, conocemos que el promedio REAL de esta variable es 30
