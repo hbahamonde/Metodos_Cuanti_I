@@ -50,7 +50,7 @@ graphics.off()
 
 # install.packages("foreign")
 library(foreign) # significa "foraneo"
-dat = read.dta("https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Lectures/Clase19/Obama.dta")
+dat = read.dta("https://github.com/hbahamonde/Metodos_Cuanti_I/raw/master/Lectures/Clase19/Obama.dta")
 
 # Base
 head(dat) # Base sobre preferencias politicas: Obama.
@@ -61,6 +61,7 @@ dat$ideology <- as.numeric(jitter(dat$ideology, factor=2, amount = 1))
 
 
 # Modelo 1
+options(scipen = 1000000) # apagar notacion cientifica.
 modelo.entero = lm(Obamafav ~ income + education + age + sex + ideology, dat)
 summary(modelo.entero)
 
@@ -147,6 +148,7 @@ head(x) # veamos como queda
 library(matlib) # para invertir matrices
 # Como necesitamos los betas para usar nuestra formula de los Errores Cuadrados 
 # del Modelo, es necesario calcular los betas. Ya conocemos esta formula...
+y = dat$Obamafav
 b = inv(t(x) %*% x) %*% t(x)%*%y # formula para sacar betas
 b
 
