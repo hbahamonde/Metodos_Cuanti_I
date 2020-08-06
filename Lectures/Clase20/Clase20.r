@@ -9,8 +9,6 @@ graphics.off()
 #################################################################
 # Motivacion
 #################################################################
-
-
 # (1) Los modelos lineales deben ser...lineales. Es decir, 
 # OLS asume que la relacion entre "x" e "y" puede ser representada
 # por una linea recta. Podemos "desafiar" este concepto de "linea recta"?
@@ -18,17 +16,14 @@ graphics.off()
 # (2) Los modelos lineales asumen "varianza constante entre los errores". 
 # Como podemos checkear ese supuesto? Como lo podemos arreglar? Como lo podemos
 # derivar matematicamente? Que relacion tiene con los outliers?
+# Var Constante: Homoesquedasticidad.
+# Var no-const: Heteroskedasticity.
 
 # (3) Como podemos detectar outliers? Como podemos solucionar este problema? 
 
 # (4) Por que el aporte de una variable independiente en la dependiente
 # podria NO SER lineal, es decir, curvilinea? Este punto es importante. Que cosas
 # en la sociedad NO SON LINEALES?
-
-
-# https://quantoid.net/teachicpsr/regression3
-
-
 #################################################################
 # Linearidad y no Linearidad
 #################################################################
@@ -56,6 +51,10 @@ crPlot(modelo.lineal, "women") # no hay relacion.
 modelo.no.lineal = lm(prestige ~ poly(income, 3) + poly(education, 2) + women, data = Prestige)
 summary(modelo.no.lineal)
 
+# crPlot con el polynomial
+crPlot(modelo.no.lineal, "poly(income, 3)") # Problema.
+
+
 # Comparemos los errores
 ## (1) Que modelo tendra menos errores y por que?
 
@@ -67,9 +66,10 @@ summary(summary(modelo.no.lineal)$residuals)
 # grafiquemos los residuos
 library(lattice)
 xyplot(modelo.lineal$residuals ~ Prestige$prestige, type=c("smooth", "p")) # mal.
-xyplot(modelo.no.lineal$residuals ~ Prestige$prestige, type=c("smooth", "p")) # bien.
+xyplot(modelo.no.lineal$residuals ~ Prestige$prestige, type=c("smooth", "p")) # mejor.
 
 # Grafiquemos el "aporte" NO LINEAL de las variables independientes
+p_load(effect)
 plot(effect("poly(income, 3)", modelo.no.lineal)) # es el menos lineal de todos
 plot(effect("poly(education, 2)", modelo.no.lineal)) # es el mas lineal.
 
@@ -145,7 +145,6 @@ xyplot(modelo.lineal$residuals ~ Prestige$income, type=c("smooth", "p")) # muy m
 summary(summary(modelo.no.lineal.box.tid)$residuals)
 summary(summary(modelo.lineal)$residuals)
 
-
 #################################################################
 # Outliers
 #################################################################
@@ -167,7 +166,7 @@ summary(summary(modelo.lineal)$residuals)
 # Demostrar ejemplo en la pizarra.
 
 library(foreign) # significa "foraneo"
-load(url("https://github.com/hbahamonde/Metodos_de_Investigacion/raw/master/Lectures/Clase21/data.rdata"))
+load(url("https://github.com/hbahamonde/Metodos_Cuanti_I/raw/master/Lectures/Clase21/data.rdata"))
 dat = data_reg
 
 # veamos como se ven los datos (esta es la base de datos de la tarea para la casa # 5)
@@ -267,29 +266,3 @@ vif(modelo.incompleto)
 # problema: x3 es una combinacion lineal de x2.
 
 # Ejemplo real: hay muchas cosas que en la sociedad estan correlacionadas, por ej?
-
-
-
-# https://stattrek.com/matrix-algebra/covariance-matrix.aspx
-# ejemplo variance-covariance matrix,
-
-
-# Hagamos un ejemplo con mas matrices, y demostremos que las varianzas se "inflan"
-# en nuestra matriz de varianza-covarianza.
-
-# Trabajaremos con los %'s de gente que asistio al estadio par
-
-# formula de la varianza
-# V = x'x ( 1 / n )
-# donde,
-# x = X - 11'X ( 1 / n )
-
-
-# (1) Primera paso, crear la matriz "x"
-
-unos = matrix(c(1,1,1,1,1), ncol = 1)
-
-
-
-
-unos %*% t(unos) 
