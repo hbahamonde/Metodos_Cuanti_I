@@ -83,6 +83,7 @@ first.s = lm(log.impuesto ~ log.precio, CigarettesSW)
 z.hat = first.s$fitted.values # Predicciones
 CigarettesSW$z.hat <- z.hat
 
+
 ## Segunda etapa
 second.s = lm(log.cantidad ~ z.hat, CigarettesSW)
 summary(second.s)

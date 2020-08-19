@@ -197,6 +197,9 @@ dat # Por cada dato (o punto), tenemos un Cook's D. Fijate que la observacion nu
 library(olsrr)
 ols_plot_cooksd_chart(m3)
 
+# Ver el error
+dat$residuals = as.vector(m3$residuals)
+
 # El punto de quiebre es 4/n. 
 4/nrow(dat) # Lo que esta arriba de 0.3636364 (arriba de la linea roja, es influence).
 
@@ -222,17 +225,17 @@ ols_plot_resid_stud_fit(autos) # OK. Son las mismas 3 observaciones que habiamos
 
 # armemos una base de datos, solo para ver que observaciones/marcas son...
 data.frame(
-        res = model$residuals,
+        res = autos$residuals,
         marca = rownames(mtcars),
         fila = 1:nrow(mtcars)
         )
 
 #################################################################
-# Errores Estandard Inflados: Multicolinearidad
+# Errores Estandard Inflados: Multicolinearidad y Multicolinearidad Perfecta
 #################################################################
 
 # Inventemos las variables independientes
-set.seed(2019)
+set.seed(2020)
 x1 = rnorm(1000, 10)
 x2 = rnorm(1000, 20) 
 x3 = (x2*x2)/1000 # x3 es una combinacion linear de x2
@@ -253,11 +256,12 @@ y = b1*x1 + b2*x2 + b3*x3 + e
 modelo.completo = lm(y ~ x1 + x2 + x3)
 summary(modelo.completo)
 
-# Modelo completo
+# Modelo incompleto
 modelo.incompleto = lm(y ~ x1 + x2)
 summary(modelo.incompleto)
 
 # Si Variance Inflation Factor (VIF) > 4....multicollinearity
+library(car)
 vif(modelo.completo) 
 vif(modelo.incompleto)
 
@@ -266,3 +270,12 @@ vif(modelo.incompleto)
 # problema: x3 es una combinacion lineal de x2.
 
 # Ejemplo real: hay muchas cosas que en la sociedad estan correlacionadas, por ej?
+
+### Ejemplo Extremo
+
+ej.extremo = lm(y ~ x1 + x2 + x2)
+summary(ej.extremo)
+
+x2.prima = x2
+ej.extremo.2 = lm(y ~ x1 + x2 + x2.prima)
+summary(ej.extremo.2)
