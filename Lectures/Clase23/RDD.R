@@ -1,4 +1,4 @@
-library (lattice)
+library(lattice)
 
 
 
@@ -15,7 +15,7 @@ group1<-data.frame(
 
 
 # desordenar y
-group1$y<-jitter(group1$y,factor=12)
+group1$y <- jitter(group1$y,factor=12)
 
 
 # graficar: Existe un tipo de relacion entre x e y pero que cambie con el tratamiento (z)?
@@ -45,7 +45,7 @@ cutoff = 10.5
 
 
 # Regresion
-analysis1<-lm(y~I(x-cutoff)*z,group1) # Vean que ocupamos el operador "I" (de "Isolate", aislar). "I" aisla todo lo que esta dentro de "I". En este caso, la sustraccion.
+analysis1 <- lm(y~I(x-cutoff)*z,group1) # Vean que ocupamos el operador "I" (de "Isolate", aislar). "I" aisla todo lo que esta dentro de "I". En este caso, la sustraccion.
 summary(analysis1)
 # Z no tiene un efecto causal 
 
@@ -84,7 +84,7 @@ xyplot(y~x,group2,
        lty=c(2,1)
 )
 
-analysis2<-lm(y~I(x-cutoff)*z,group2)
+analysis2 <- lm(y~I(x-cutoff)*z,group2)
 summary(analysis2)
 
 
@@ -109,7 +109,7 @@ xyplot(y~x,group3,
        groups=z)
 
 # plot 2
-xyplot(y~x,group3,
+xyplot(y~I(x-cutoff),group3,
        xlab="Time",
        ylab="Score",
        main="Progression through Intervention Scenario 3",
@@ -121,5 +121,8 @@ xyplot(y~x,group3,
        lty=c(2,1))
 
 # Reg
-analysis3<-lm(y~I(x-cutoff)*z,group3) 
+analysis3 <- lm(y~I(x-cutoff)*z,group3) 
 summary(analysis3)
+
+## 1. Estimar una regresion polinomial.
+## 2. Comparar ambos modelos. 
